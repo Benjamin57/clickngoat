@@ -1,0 +1,15 @@
+<h1>Players detail</h1>
+
+<ul>
+  <li><%= @player.name %></li>
+  <li><%= @player.description %></li>
+  <li><%= @player.photo %></li>
+  <li><%= @player.price_per_day %></li>
+  <li><%= @player.level %></li>
+  <li><%= @player.position %></li>
+  <!-- <li><%= @player.latitude %></li>
+  <li><%= @player.longitude %></li> -->
+</ul>
+
+<%= link_to "Edit", edit_player_path(@player) %>
+<%= link_to "Delete", player_path(@player), method: :delete %>

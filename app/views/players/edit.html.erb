@@ -1,0 +1,22 @@
+<h1>Edit player</h1>
+<%= simple_form_for(@player) do |f| %>
+
+  <% if @player.errors.any? %>
+    <div class="errors-container">
+      <ul>
+        <% @player.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :level %>
+  <%= f.input :price_per_day %>
+  <%= f.input :position %>
+
+  <%= f.submit "edit player", class: "btn btn-primary" %>
+  <%= link_to "Back to home", players_path, class: "btn btn-danger" %>
+<% end %>
