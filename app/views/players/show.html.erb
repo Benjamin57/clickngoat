@@ -3,12 +3,12 @@
 <ul>
   <li><%= @player.name %></li>
   <li><%= @player.description %></li>
-  <li><%= @player.photo %></li>
   <li><%= @player.price_per_day %></li>
   <li><%= @player.level %></li>
   <li><%= @player.position %></li>
   <!-- <li><%= @player.latitude %></li>
   <li><%= @player.longitude %></li> -->
+  <li><%= cl_image_tag @player.photo, height: 300, width: 400, crop: :fill %></li>
 </ul>
 
 <%= link_to "Edit", edit_player_path(@player) %>

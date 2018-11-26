@@ -16,6 +16,8 @@
   <%= f.input :level %>
   <%= f.input :price_per_day %>
   <%= f.input :position %>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
 
   <%= f.submit "edit player", class: "btn btn-primary" %>
   <%= link_to "Back to home", players_path, class: "btn btn-danger" %>
