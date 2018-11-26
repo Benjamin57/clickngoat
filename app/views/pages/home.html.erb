@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,90,146,0.3) 0%, rgba(0,36,61,0.6) 50%), url('https://images.unsplash.com/photo-1524024973431-2ad916746881?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bf68678eb7c8e22fff85ed474b218aba&auto=format&fit=crop&w=1050&q=80');">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,90,146,0.3) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_path "banner-home.jpg" %>);">
   <div class="banner-content">
     <h1>Rent best goats & stars for a game</h1>
     <p>Simple, easy and secure</p>
@@ -7,16 +7,19 @@
 </div>
 <div class="container">
   <div class="row">
+    <% @players.each do |player|  %>
     <div class="col-xs-12 col-sm-4">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+      <%= link_to player_path(player) do %>
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path player.photo %>);">
         <div class="card-category">Popular</div>
         <div class="card-description">
-          <h2>Le Wagon Shanghai</h2>
-          <p>Very cool city, the best</p>
+          <h2><%= player.name %></h2>
+          <p><%= player.level %></p>
         </div>
         <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
-        <a class="card-link" href="#" ></a>
       </div>
+      <% end  %>
     </div>
+    <% end  %>
   </div>
 </div>
