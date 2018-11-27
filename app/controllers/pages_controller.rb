@@ -4,4 +4,8 @@ class PagesController < ApplicationController
   def home
     @players = Player.all
   end
+
+  def dashboard
+    @players = current_user.players
+  end
 end
