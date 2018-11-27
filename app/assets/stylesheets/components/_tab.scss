@@ -1,11 +1,10 @@
 .tabs {
-  background: #53443F;
   display: flex;
   padding: 10px 10px 0 10px;
   margin-top: 100px;
 }
 .tabs a {
-  color: white;
+  color: $blue-goat;
 }
 .tabs a:hover {
   cursor: pointer;
@@ -22,7 +21,6 @@
   margin-bottom: 0;
 }
 .tab {
-  background: #756A66;
   flex: 0 0 25%;
   text-align: center;
   padding: 20px 0;
@@ -34,6 +32,12 @@
   border-radius: 0 10px 0 0;
 }
 .tab.active {
-  background: white;
-  color: black;
+  color: $blue-goat;
+  border-bottom: solid 2px $yellow-goat;
+  text-decoration: none;
 }
+
+.tab.hidden {
+  display: none;
+}
+
