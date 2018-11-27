@@ -1,29 +1,30 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-4 col-sm-offset-4">
-      <h1>Edit player</h1>
-      <%= simple_form_for(@player) do |f| %>
+  <div class="container-form">
+    <div class="row">
+      <div class="col-sm-4 col-sm-offset-4">
+        <h2>Edit player</h2>
+        <%= simple_form_for(@player) do |f| %>
 
-        <% if @player.errors.any? %>
-          <div class="errors-container">
-            <ul>
-              <% @player.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
+          <% if @player.errors.any? %>
+            <div class="errors-container">
+              <ul>
+                <% @player.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <%= f.input :name %>
+          <%= f.input :city %>
+          <%= f.input :description %>
+          <%= f.input :level, collection: Player::LEVELS, input_html: { class: "select2" } %>
+          <%= f.input :position, collection: Player::POSITIONS, input_html: { class: "select2" } %>
+          <%= f.input :price_per_day %>
+          <%= f.input :photo %>
+          <%= f.input :photo_cache, as: :hidden %>
+          <%= f.submit "Submit changes", class: "btn-yellow-sm btn-margin-top" %>
         <% end %>
-        <%= f.input :name %>
-        <%= f.input :city %>
-        <%= f.input :description %>
-        <%= f.input :level %>
-        <%= f.input :price_per_day %>
-        <%= f.input :position %>
-        <%= f.input :photo %>
-        <%= f.input :photo_cache, as: :hidden %>
-        <%= f.submit "edit player", class: "btn btn-primary" %>
-        <%= link_to "Back to home", players_path, class: "btn btn-danger" %>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>
