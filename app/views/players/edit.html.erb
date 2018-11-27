@@ -16,9 +16,9 @@
         <%= f.input :name %>
         <%= f.input :city %>
         <%= f.input :description %>
-        <%= f.input :level %>
+        <%= f.select :level, Player::LEVELS, class: "select2" %>
         <%= f.input :price_per_day %>
-        <%= f.input :position %>
+        <%= f.select :position, Player::POSITIONS, class: "select2" %>
         <%= f.input :photo %>
         <%= f.input :photo_cache, as: :hidden %>
         <%= f.submit "edit player", class: "btn btn-primary" %>
