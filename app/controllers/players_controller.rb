@@ -1,10 +1,16 @@
 class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :edit, :update, :destroy]
+  # skip_after_action :verify_policy_scoped, only: :index
+
   def index
     @players = policy_scope(Player)
   end
 
   def show
+  end
+
+  def all
+    @players = Player.select { |user_id| user_id == current_user.id }
   end
 
   def new
@@ -28,7 +34,7 @@ class PlayersController < ApplicationController
 
   def update
     @player.update(player_params)
-    redirect_to player_path(@player)
+    redirect_to dashboard_path
   end
 
   def destroy

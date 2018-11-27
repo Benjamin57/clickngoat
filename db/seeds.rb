@@ -6,9 +6,27 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Player.create!(name: "Tavares", city: "Dijon", description: "A pretty good goat", photo: "na", level: "Goat", price_per_day: 10, position: "Forward", user_id: 1)
-Player.create!(name: "Germain", city: "Turin", description: "Worse goat in the world", photo: "na", level: "World-goat", price_per_day: 1, position: "Substitute", user_id: 1)
-Player.create!(name: "Chiellini", city: "Paris", description: "Best defender in the world", photo: "na", level: "World-class", price_per_day: 10000, position: "Center-back", user_id: 1)
-Player.create!(name: "Crivelli", city: "Caen", description: "Best player in Caen", photo: "na", level: "Regional", price_per_day: 100, position: "Forward", user_id: 1)
-Player.create!(name: "Pogboum", city: "Manchester", description: "Best midfield in the world", photo: "na", level: "World-class", price_per_day: 100000, position: "Midfielder", user_id: 1)
-Player.create!(name: "Benzebut", city: "Madrid", description: "Best midfield in the world", photo: "na", level: "World-class", price_per_day: 100000, position: "Midfielder", user_id: 1)
+Player.destroy_all
+
+url = "http://static.giantbomb.com/uploads/original/9/99864/2419866-nes_console_set.png"
+
+tavares = Player.new(name: "Tavares", city: "Dijon", description: "A pretty good goat", level: Player::LEVELS.sample, price_per_day: 10, position: Player::POSITIONS.sample, user_id: 1)
+germain = Player.new(name: "Germain", city: "Turin", description: "Worse goat in the world", level: Player::LEVELS.sample, price_per_day: 1, position: Player::POSITIONS.sample, user_id: 1)
+chiellini = Player.new(name: "Chiellini", city: "Paris", description: "Best defender in the world", level: Player::LEVELS.sample, price_per_day: 10000, position:Player::POSITIONS.sample , user_id: 1)
+crivelli = Player.new(name: "Crivelli", city: "Caen", description: "Best player in Caen", level: Player::LEVELS.sample, price_per_day: 100, position: Player::POSITIONS.sample, user_id: 1)
+pogboum = Player.new(name: "Pogboum", city: "Manchester", description: "Best midfield in the world", level: Player::LEVELS.sample, price_per_day: 100000, position: Player::POSITIONS.sample, user_id: 1)
+benzebut = Player.new(name: "Benzebut", city: "Madrid", description: "Best midfield in the world", level: Player::LEVELS.sample, price_per_day: 100000, position: Player::POSITIONS.sample, user_id: 1)
+
+tavares.remote_photo_url = url
+germain.remote_photo_url = url
+chiellini.remote_photo_url = url
+crivelli.remote_photo_url = url
+pogboum.remote_photo_url = url
+benzebut.remote_photo_url = url
+
+tavares.save!
+germain.save!
+chiellini.save!
+crivelli.save!
+pogboum.save!
+benzebut.save!
