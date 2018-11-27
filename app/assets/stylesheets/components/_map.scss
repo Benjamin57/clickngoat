@@ -1,6 +1,6 @@
 #map {
   flex: 0 0 450px;
-  height: calc(100vh -100px);
+  height: calc(100vh - 70px);
   position: sticky !important; /* !important to override Gmaps inline CSS */
-  top: 80px !important;
+  top: 70px !important;
 }

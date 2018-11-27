@@ -14,8 +14,8 @@
     <%= render 'shared/navbar' %>
     <div class="all-pages-container">
       <%= yield %>
+      <%= render 'shared/footer' unless params["controller"] == "players" && params["action"] == "index" %>
     </div>
-    <%= render 'shared/footer' %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>
