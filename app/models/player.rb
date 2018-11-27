@@ -6,4 +6,5 @@ class Player < ApplicationRecord
   validates :price_per_day, presence: true
   validates :position, presence: true
   mount_uploader :photo, PhotoUploader
+  validates :city, presence: true
 end
