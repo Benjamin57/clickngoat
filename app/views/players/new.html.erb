@@ -16,10 +16,10 @@
         <%= f.input :city %>
         <%= f.input :description %>
         <%= f.label :level, "Level" %>
-        <%= f.select :level, Player::LEVELS %>
+        <%= f.select :level, Player::LEVELS, class: "select2" %>
         <%= f.input :price_per_day %>
         <%= f.label :position, "Position" %>
-        <%= f.select :position, Player::POSITIONS %>
+        <%= f.select :position, Player::POSITIONS, class: 'select2' %>
         <%= f.input :photo %>
         <%= f.input :photo_cache, as: :hidden %>
         <%= f.submit "add a player", class: "btn btn-primary" %>
@@ -28,5 +28,3 @@
     </div>
   </div>
 </div>
-
-
