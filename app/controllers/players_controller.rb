@@ -40,6 +40,6 @@ class PlayersController < ApplicationController
   private
 
   def player_params
-    params.require(:player).permit(:name, :description, :price_per_day, :level, :position, :photo)
+    params.require(:player).permit(:name, :city, :description, :price_per_day, :level, :position, :photo)
   end
 end
