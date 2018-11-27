@@ -1,30 +1,52 @@
 <div class="container">
   <div class="row">
     <div class="tabs">
-      <a class="tab active" href="#">
+      <a class="tab active" href="" id="players-trigger">
         <h3>My players</h3>
       </a>
-      <a class="tab" href="#">
+      <a class="tab" href="" id="bookings-trigger">
         <h3>My bookings</h3>
       </a>
     </div>
-    <% @players.each do |player| %>
-    <div class="message">
-      <%= image_tag "#{player.photo}", style:'height:50px;width:50px;border-radius:50%;' %>
-      <div class="message-name">
-        <h3><%= player.name %></h3>
-        <p><%= player.level %></p>
+    <div id="players">
+      <% @players.each do |player| %>
+      <div class="message">
+        <%= image_tag "#{player.photo}", style:'height:50px;width:50px;border-radius:50%;' %>
+        <div class="message-name">
+          <h3><%= player.name %></h3>
+          <p><%= player.level %></p>
+        </div>
+        <div class="message-body">
+          <p><strong>Description</strong></p>
+          <p><%= player.description %></p>
+        </div>
+        <div class="message-status">
+          <%=  link_to "Edit", edit_player_path(player),class: "btn-white" %>
+          <%=  link_to "Delete", player_path(player), method: :delete, class: "btn-white"%>
+        </div>
       </div>
-      <div class="message-body">
-        <p><strong>Description</strong></p>
-        <p><%= player.description %></p>
-      </div>
-      <div class="message-status">
-        <%=  link_to "Edit", edit_player_path(player),class: "btn-white" %>
-        <%=  link_to "Delete", player_path(player), method: :delete, class: "btn-white"%>
-      </div>
+      <% end %>
     </div>
-    <% end %>
+    <div id="bookings" class="hidden">
+      <% @bookings.each do |booking| %>
+      <div class="message">
+        <%= image_tag "#{booking.player.photo}", style:'height:50px;width:50px;border-radius:50%;' %>
+        <div class="message-name">
+          <h3><%= booking.player.name %></h3>
+          <p><%= booking.player.level %></p>
+        </div>
+        <div class="message-body">
+          <p><strong>Daily Price</strong></p>
+          <p><%= booking.player.price_per_day %></p>
+        </div>
+        <div class="message-body">
+          <p><strong>Total Price</strong></p>
+          <p><%= booking.total_price %></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
   </div>
 </div>
 
