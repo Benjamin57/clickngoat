@@ -1,20 +1,22 @@
-<h1>Players detail</h1>
-
-<ul>
-  <li><%= @player.name %></li>
-  <li><%= @player.city %></li>
-  <li><%= @player.description %></li>
-  <li><%= @player.price_per_day %></li>
-  <li><%= @player.level %></li>
-  <li><%= @player.position %></li>
-  <!-- <li><%= @player.latitude %></li>
-  <li><%= @player.longitude %></li> -->
-  <li><%= cl_image_tag @player.photo, height: 300, width: 400, crop: :fill %></li>
-</ul>
-
-<% if policy(@player).edit? %>
-    <%= link_to "Update", edit_player_path(@player) %>
-<% end %>
-<% if policy(@player).destroy? %>
-    <%= link_to "Delete", player_path(@player), method: :delete %>
-<% end %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), url('<%= cl_image_path @player.photo %>');">
+  <div class="banner-content">
+    <h1><%= @player.name %></h1>
+    <h2><%= @player.level %></h2>
+  </div>
+</div>
+<div class="container">
+ <div class="row" >
+   <div class="col-md-8">
+     <div class="player-show-card">
+        <p><%= @player.city %></p>
+       <h3>Description</h3>
+       <p><%= @player.description %></p>
+     </div>
+   </div>
+   <div class="col-md-4">
+     <div class="player-show-card">
+      <h4><%= @player.price_per_day %>€ per day</h4>
+     </div>
+   </div>
+ </div>
+</div>

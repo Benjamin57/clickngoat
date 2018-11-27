@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="tabs">
+      <a class="tab active" href="#">
+        <h3>My players</h3>
+      </a>
+      <a class="tab" href="#">
+        <h3>My bookings</h3>
+      </a>
+    </div>
+    <% @players.each do |player| %>
+    <div class="message">
+      <%= image_tag "#{player.photo}", style:'height:50px;width:50px;border-radius:50%;' %>
+      <div class="message-name">
+        <h3><%= player.name %></h3>
+        <p><%= player.level %></p>
+      </div>
+      <div class="message-body">
+        <p><strong>Description</strong></p>
+        <p><%= player.description %></p>
+      </div>
+      <div class="message-status">
+        <%=  link_to "Edit", edit_player_path(player),class: "btn-white" %>
+        <%=  link_to "Delete", player_path(player), method: :delete, class: "btn-white"%>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
