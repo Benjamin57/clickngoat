@@ -1,14 +1,15 @@
 class PlayersController < ApplicationController
+  before_action :set_player, only: [:show, :edit, :update, :destroy]
   def index
-    @players = Player.all
+    @players = policy_scope(Player)
   end
 
   def show
-    @player = Player.find(params[:id])
   end
 
   def new
     @player = Player.new
+    authorize @player
   end
 
   def create
@@ -19,25 +20,28 @@ class PlayersController < ApplicationController
     else
       render :new
     end
+    authorize @player
   end
 
   def edit
-    @player = Player.find(params[:id])
   end
 
   def update
-    @player = Player.find(params[:id])
     @player.update(player_params)
     redirect_to player_path(@player)
   end
 
   def destroy
-    @player = Player.find(params[:id])
     @player.destroy
     redirect_to players_path
   end
 
   private
+
+  def set_player
+    @player = Player.find(params[:id])
+    authorize @player
+  end
 
   def player_params
     params.require(:player).permit(:name, :description, :price_per_day, :level, :position, :photo)

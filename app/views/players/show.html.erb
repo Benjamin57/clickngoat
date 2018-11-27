@@ -11,5 +11,9 @@
   <li><%= cl_image_tag @player.photo, height: 300, width: 400, crop: :fill %></li>
 </ul>
 
-<%= link_to "Edit", edit_player_path(@player) %>
-<%= link_to "Delete", player_path(@player), method: :delete %>
+<% if policy(@player).edit? %>
+    <%= link_to "Update", edit_player_path(@player) %>
+<% end %>
+<% if policy(@player).destroy? %>
+    <%= link_to "Delete", player_path(@player), method: :delete %>
+<% end %>
