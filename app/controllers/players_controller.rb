@@ -7,10 +7,7 @@ class PlayersController < ApplicationController
   end
 
   def show
-  end
-
-  def all
-    @players = Player.select { |user_id| user_id == current_user.id }
+    @booking = Booking.new
   end
 
   def new
