@@ -1,4 +1,5 @@
 const toggleTab = () => {
+
   const playersTab = document.getElementById("players-trigger")
   const bookingsTab = document.getElementById("bookings-trigger")
   if (playersTab && bookingsTab) {

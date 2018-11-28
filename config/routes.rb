@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   end
   get "/dashboard/bookings/:id", to:"bookings#show", as: "show_new_booking"
   get "/dashboard", to: "pages#dashboard"
+  patch "/dashboard/bookings/:id", to:"bookings#update", as: "update_new_booking"
 end
 

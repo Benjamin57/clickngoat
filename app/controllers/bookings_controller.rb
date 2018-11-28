@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show]
+  before_action :set_booking, only: [:show, :edit]
 
   def index
     @bookings = policy_scope(Booking)
@@ -27,6 +27,16 @@ class BookingsController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    @booking.update(booking_params)
+    authorize @booking.player
+    redirect_to dashboard_path
+  end
+
   private
 
   def set_booking
@@ -35,6 +45,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:number_of_days)
+    params.require(:booking).permit(:number_of_days, :status)
   end
 end
