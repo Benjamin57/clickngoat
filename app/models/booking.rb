@@ -5,4 +5,5 @@ class Booking < ApplicationRecord
   STATUS = ["Pending", "Accepted", "Declined"]
   validates :status, presence: true, inclusion: { in: STATUS }
 
+
 end
