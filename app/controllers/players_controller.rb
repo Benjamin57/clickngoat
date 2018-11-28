@@ -3,7 +3,15 @@ class PlayersController < ApplicationController
   # skip_after_action :verify_policy_scoped, only: :index
 
   def index
-    @players = policy_scope(Player)
+    @players = policy_scope(Player.where.not(latitude: nil, longitude: nil))
+
+    @markers = @players.map do |player|
+          {
+            lng: player.longitude,
+            lat: player.latitude,
+            infowindow: render_to_string(partial: "infowindow", locals: { player: player })
+          }
+    end
   end
 
   def show

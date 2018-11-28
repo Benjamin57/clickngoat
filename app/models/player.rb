@@ -11,4 +11,6 @@ class Player < ApplicationRecord
   validates :position, presence: true, inclusion: { in: POSITIONS }
   mount_uploader :photo, PhotoUploader
   validates :city, presence: true
+  geocoded_by :city
+  after_validation :geocode, if: :will_save_change_to_city?
 end
