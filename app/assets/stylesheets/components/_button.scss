@@ -15,6 +15,24 @@
   }
 }
 
+.btn-white-sm {
+  color: $blue-goat;
+  border: solid 1.5px;
+  border-color: $blue-goat;
+  padding: 5px 20px;
+  font-size: 20px;
+  transition: all 0.5s ease-out;
+  a {
+    text-decoration: none;
+  }
+  opacity: 1;
+  &:hover {
+    text-decoration: none;
+    opacity: 0.6;
+    color: $blue-goat;
+  }
+}
+
 .btn-yellow {
   color: $blue-goat;
   background-color: $yellow-goat;

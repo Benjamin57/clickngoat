@@ -1,3 +1,12 @@
-<h1>Bookings#show</h1>
-<p><%= @booking.number_of_days %></p>
-<p><%= @booking.total_price %></p>
+<div class="container">
+  <div class="container-form">
+    <h2>Booking ID : <%= @booking.id %></h2>
+    <p><%= @booking.number_of_days %> days</p>
+    <p><%= @booking.total_price %> €</p>
+    <p><%= @booking.status %></p>
+    <% if @booking.status == "Pending" %>
+      <%= link_to "Accept", dashboard_path, class: "btn-yellow-sm", data: { confirm: "Are you sure?" } %>
+      <%= link_to "Decline", dashboard_path, class: "btn-white-sm", data: { confirm: "Are you sure?" } %>
+    <% end %>
+  </div>
+</div>

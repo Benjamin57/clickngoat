@@ -21,8 +21,10 @@
           <p><%= player.description %></p>
         </div>
         <div class="message-status">
-          <%=  link_to "Edit", edit_player_path(player),class: "btn-white" %>
-          <%=  link_to "Delete", player_path(player), method: :delete, class: "btn-white"%>
+          <%=  link_to "Edit", edit_player_path(player),class: "btn-white" %> -
+          <%=  link_to player_path(player), method: :delete, data: { confirm: "Are you sure?"  } do %>
+              <i class="fas fa-trash-alt"></i>
+          <% end %>
         </div>
       </div>
       <% end %>
