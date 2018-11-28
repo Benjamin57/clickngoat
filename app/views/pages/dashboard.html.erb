@@ -10,22 +10,23 @@
     </div>
     <div id="players">
       <% @players.each do |player| %>
-        <div class="message">
-          <%= image_tag "#{player.photo}", style:'height:50px;width:50px;border-radius:50%;' %>
-          <div class="message-name">
-            <h3><%= player.name %></h3>
-            <p><%= player.level %></p>
-          </div>
-          <div class="message-body">
-            <p><strong>Description</strong></p>
-            <p><%= player.description %></p>
-          </div>
-          <div class="message-status">
-            <%=  link_to "Edit", edit_player_path(player),class: "btn-white" %> -
+      <div class="message">
+        <%= image_tag "#{player.photo}", style:'height:50px;width:50px;border-radius:50%;' %>
+        <div class="message-name">
+          <h3><%= player.name %></h3>
+          <p><%= player.level %></p>
+        </div>
+        <div class="message-body">
+          <p><strong>Description</strong></p>
+          <p><%= player.description %></p>
+        </div>
+        <div class="message-status">
+          <%=  link_to "Edit", edit_player_path(player),class: "btn-white" %>
+          <% if (@all_bookings.select{|booking| booking.player_id == player.id}.blank?) %>
             <%=  link_to player_path(player), method: :delete, data: { confirm: "Are you sure?"  } do %>
                 <i class="fas fa-trash-alt"></i>
-            <% end %>
-          </div>
+          <% end  %>
+        <% end %>
         </div>
       <% end %>
     </div>
