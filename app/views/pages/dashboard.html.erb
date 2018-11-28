@@ -60,25 +60,27 @@
       <% end %>
       <h4>My bookings</h4>
       <% @bookings.each do |booking| %>
-      <div class="message">
-        <%= image_tag "#{booking.player.photo}", style:'height:50px;width:50px;border-radius:50%;' %>
-        <div class="message-name">
-          <h3><%= booking.player.name %></h3>
-          <p><%= booking.player.level %></p>
-        </div>
-        <div class="message-body">
-          <p><strong>Daily Price</strong></p>
-          <p><%= booking.player.price_per_day %></p>
-        </div>
-        <div class="message-body">
-          <p><strong>Total Price</strong></p>
-          <p><%= booking.total_price %></p>
-        </div>
-        <div class="message-body">
-          <p><strong>Status</strong></p>
-          <p><%= booking.status %></p>
-        </div>
-      </div>
+        <%= link_to show_new_booking_path(booking), style: "text-decoration:none;" do %>
+          <div class="message">
+            <%= image_tag "#{booking.player.photo}", style:'height:50px;width:50px;border-radius:50%;' %>
+            <div class="message-name">
+              <h3><%= booking.player.name %></h3>
+              <p><%= booking.player.level %></p>
+            </div>
+            <div class="message-body">
+              <p><strong>Daily Price</strong></p>
+              <p><%= booking.player.price_per_day %></p>
+            </div>
+            <div class="message-body">
+              <p><strong>Total Price</strong></p>
+              <p><%= booking.total_price %></p>
+            </div>
+            <div class="message-body">
+              <p><strong>Status</strong></p>
+              <p><%= booking.status %></p>
+            </div>
+          </div>
+        <% end %>
       <% end %>
     </div>
 
