@@ -1,16 +1,25 @@
 <div class="container">
   <div class="container-form">
-    <h2>Booking ID : <%= @booking.id %></h2>
-    <p><%= @booking.number_of_days %> days</p>
-    <p><%= @booking.total_price %> €</p>
-    <p><%= @booking.status %></p>
-    <% if @booking.player.user == current_user  %>
-      <% if @booking.status == "Pending" %>
-        <%= simple_form_for(@booking, url: update_new_booking_path(@booking)) do |f| %>
-        <%= f.input :status, collection: ["Accepted", "Declined"],  input_html: { class: "select2" } %>
-        <%= f.submit "Confirm", class: "btn-yellow-sm btn-margin-top" %>
-        <% end %>
-    <% end %>
-    <% end %>
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+          <div class="card-booking">
+            <h2>Booking ID : <%= @booking.id %></h2>
+            <h3><%= @booking.player.name %></h3>
+            <%= cl_image_tag @booking.player.photo, height: 200, width: 200, crop: :fill %>
+            <p><strong>City:</strong> <%= @booking.player.city %></p>
+            <p><strong>Number of Days:</strong> <%= @booking.number_of_days %> days</p>
+            <p><strong>Total Price:</strong> <%= @booking.total_price %> €</p>
+            <p><strong>Status:</strong> <%= @booking.status %></p>
+            <% if @booking.player.user == current_user  %>
+              <% if @booking.status == "Pending" %>
+                <%= simple_form_for(@booking, url: update_new_booking_path(@booking)) do |f| %>
+                <%= f.input :status, collection: ["Accepted", "Declined"],  input_html: { class: "select2" } %>
+                <%= f.submit "Confirm", class: "btn-yellow-sm btn-margin-top" %>
+                <% end %>
+            <% end %>
+            <% end %>
+          </div>
+        </div>
+    </div>
   </div>
 </div>
