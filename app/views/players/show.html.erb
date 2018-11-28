@@ -13,14 +13,16 @@
        <p><%= @player.description %></p>
      </div>
    </div>
-   <div class="col-md-4">
-     <div class="player-show-card">
-      <h4><%= @player.price_per_day %>€ per day</h4>
-      <%= simple_form_for [@player, @booking] do |f| %>
-         <%= f.input :number_of_days %>
-         <%= f.submit "Book", class: "btn-yellow" %>
-       <% end %>
+   <% if @player.user != current_user %>
+     <div class="col-md-4">
+       <div class="player-show-card">
+        <h4><%= @player.price_per_day %>€ per day</h4>
+        <%= simple_form_for [@player, @booking] do |f| %>
+           <%= f.input :number_of_days %>
+           <%= f.submit "Book", class: "btn-yellow" %>
+         <% end %>
+       </div>
      </div>
-   </div>
+     <% end  %>
  </div>
 </div>
