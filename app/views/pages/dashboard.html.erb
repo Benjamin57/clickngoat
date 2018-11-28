@@ -23,7 +23,7 @@
           <div class="message-status">
             <%=  link_to "Edit", edit_player_path(player),class: "btn-white" %>
             <% if (@all_bookings.select{|booking| booking.player_id == player.id}.blank?) %>
-              <%=  link_to player_path(player), method: :delete, data: { confirm: "Are you sure?"  } do %>
+              <%=  link_to player_path(player), method: :delete, data: { confirm: "Are you really sure?"  } do %>
                   <i class="fas fa-trash-alt"></i>
               <% end  %>
             <% end %>
