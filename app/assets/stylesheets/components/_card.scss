@@ -6,6 +6,9 @@
   color: white;
   position: relative;
   margin: 5px;
+  &:hover {
+    opacity: 0.7;
+  }
 }
 .card-user {
   position: absolute;
