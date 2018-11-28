@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="tabs">
-      <a class="tab" href="#players">
+      <a class="tab active" href="" id="players-trigger">
         <h3>My players</h3>
       </a>
-      <a class="tab active" href="#bookings">
+      <a class="tab" href="" id="bookings-trigger">
         <h3>My bookings</h3>
       </a>
     </div>
@@ -29,7 +29,7 @@
       </div>
       <% end %>
     </div>
-    <div id="bookings">
+    <div id="bookings" class="hidden">
       <% @bookings.each do |booking| %>
       <div class="message">
         <%= image_tag "#{booking.player.photo}", style:'height:50px;width:50px;border-radius:50%;' %>

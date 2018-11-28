@@ -1,3 +1,18 @@
+.cards-container {
+  width: 100%;
+  margin-bottom: 80px;
+}
+
+.main-container {
+  display: flex;
+}
+
+.all-pages-container {
+  min-height: calc(100vh - 170px);
+  position: absolute;
+  top: 70px;
+  width: 100vw;
+}
 // .container {
 //   margin-top: 80px !important;
 // }

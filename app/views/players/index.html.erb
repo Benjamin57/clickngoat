@@ -1,7 +1,43 @@
-<h1>List of players</h1>
 
-<ul>
-  <% @players.each do |player| %>
-  <li><%= link_to "#{player.name}", player_path(player) %></li>
-  <% end  %>
-</ul>
+<div class="main-container">
+
+  <div class="cards-container">
+      <h1>Pick Your Goat!</h1>
+    <div class="row">
+      <% @players.each do |player| %>
+      <div class="col-xs-12 col-sm-4">
+        <a href="<%= player_path(player) %>">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path player.photo %>);">
+          <div class="card-category"><%= player.level %></div>
+          <div class="card-description">
+            <h2><%= player.name %></h2>
+            <p><%= player.position %></p>
+          </div>
+          <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+        </div>
+        </a>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div id="map"></div>
+</div>
+
+<script>
+  function initMap() {
+    // Create a map object and specify the DOM element for display.
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 52.5206, lng: 13.4098},
+      scrollwheel: false,
+      zoom: 8
+    });
+  }
+</script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Gmaps JavaScript -->
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzER7O10ZOUp7FloJzMe2r8X1GIQhgt7Q&callback=initMap">
+    </script>
