@@ -2,7 +2,20 @@
 <div class="main-container">
 
   <div class="cards-container">
-      <h1>Pick Your Goat!</h1>
+    <%= form_tag players_path, method: :get, class: "form-inline form-index" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control input-home",
+        placeholder: "Find a goat"
+      %>
+      <%= button_tag "Goat Search", class: "btn-yellow" %>
+    <% end %>
+    <% if (@players.count > 1) %>
+      <% search_text = "potential goats found" %>
+    <% else %>
+      <% search_text = "potential goat found" %>
+    <% end %>
+    <h2><%= @players.count %> <%= search_text %></h2>
     <div class="row">
       <% @players.each do |player| %>
       <div class="col-xs-12 col-sm-4">
