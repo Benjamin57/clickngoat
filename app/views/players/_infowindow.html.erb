@@ -20,6 +20,7 @@
       <% end %>
       <% count += 1 %>
     <% end %>
+    (<%= player.reviews.count %>)
   </li>
   <li><%= link_to "Details", player_path(player)%></li>
 </ul>

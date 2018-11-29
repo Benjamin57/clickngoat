@@ -16,12 +16,34 @@
   <div class="row">
     <% @players.each do |player|  %>
     <div class="col-xs-12 col-sm-4">
-      <%= link_to player_path(player) do %>
       <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path player.photo %>);">
-        <div class="card-category"><%= player.level %></div>
-        <div class="card-description">
-          <h2><%= player.name %></h2>
-          <p><%= player.position %></p>
+        <%= link_to player_path(player) do %>
+        <div class="card-body">
+          <div class="card-category"><%= player.level %></div>
+          <div class="card-description">
+            <h2><%= player.name %></h2>
+            <p><%= player.position %></p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <% array = [] %>
+          <% player.reviews.each do |review|  %>
+            <% array << review.rating %>
+          <% end %>
+          <% total = array.sum / player.reviews.count.to_f %>
+
+          <% count = 0 %>
+          <% 5.times do %>
+            <% if total > count %>
+              <i class="fas fa-star"></i>
+            <% else %>
+              <i class="far fa-star"></i>
+            <% end %>
+            <% count += 1 %>
+          <% end %>
+          (<%= player.reviews.count %>)
+
+          <p><%= player.price_per_day %> € per day</p>
         </div>
       </div>
       <% end %>
