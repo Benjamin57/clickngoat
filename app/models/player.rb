@@ -10,6 +10,7 @@ class Player < ApplicationRecord
   validates :price_per_day, presence: true
   validates :position, presence: true, inclusion: { in: POSITIONS }
   mount_uploader :photo, PhotoUploader
+  validates :photo, presence: true
   validates :city, presence: true
   geocoded_by :city
   after_validation :geocode, if: :will_save_change_to_city?
