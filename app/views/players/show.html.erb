@@ -19,10 +19,8 @@
         <h4><%= @player.price_per_day %>€ per day</h4>
         <%= simple_form_for [@player, @booking] do |f| %>
           <div class="form-wrapper" style="margin: 0 auto;">
-            <%= simple_form_for :search, method: "get" do |f| %>
-              <%= f.input :starts_at, as: :string, required: false, input_html: {id: "range_start"} %>
+              <%= f.input :pick_your_date, as: :string, required: false, input_html: {id: "range_start"} %>
               <%= f.submit "Book", class: "btn-yellow" %>
-            <% end %>
           </div>
          <% end %>
        </div>
