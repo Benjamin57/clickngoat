@@ -14,6 +14,7 @@ class Player < ApplicationRecord
   validates :city, presence: true
   geocoded_by :city
   after_validation :geocode, if: :will_save_change_to_city?
+  has_many :reviews, dependent: :destroy
 
   include PgSearch
   pg_search_scope :global_search,

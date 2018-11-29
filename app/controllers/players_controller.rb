@@ -16,7 +16,9 @@ class PlayersController < ApplicationController
   end
 
   def show
+    @review = Review.new
     @booking = Booking.new
+    @all_reviews = Review.all
   end
 
   def new
