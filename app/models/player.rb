@@ -1,5 +1,6 @@
 class Player < ApplicationRecord
   belongs_to :user
+  has_many :bookings
 
   LEVELS = ["Legend", "World-class", "Professional", "Ligue1", "Regional", "Goat", "World-goat"]
   POSITIONS = ["Forward", "Midfielder", "Center-back", "Wing-back", "Goal-keeper", "Substitute"]
