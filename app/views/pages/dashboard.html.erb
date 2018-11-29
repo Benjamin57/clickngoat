@@ -64,13 +64,19 @@
                   <p class="status pending"><%= booking.status %></p>
                 <% end %>
               </div>
+              <div class="message-body">
+                <p><strong>Action</strong></p>
+                <p> bkaa </p>
+              </div>
               <% if booking.status == 'pending' %>
               <div class="message-body">
                 <p><strong>Action</strong></p>
                 <p><%= link_to 'Accept', accept_new_booking_path(booking), method: :patch %> <%= link_to 'Decline', decline_new_booking_path(booking), method: :put %></p>
               </div>
+
               <% end %>
             </div>
+
           <% end %>
         <% end %>
       <% end %>
@@ -100,6 +106,12 @@
                 <% else %>
                   <p class="status pending"><%= booking.status %></p>
                 <% end %>
+            </div>
+            <div class="message-body">
+              <p><strong>Email</strong></p>
+              <%= link_to booking_messages_path(booking), class: "btn-option", method: :get do %>
+                <i class="fas fa-envelope"></i>
+              <% end %>
             </div>
           </div>
       <% end %>
