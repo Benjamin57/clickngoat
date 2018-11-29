@@ -21,11 +21,15 @@
             <p><%= player.description %></p>
           </div>
           <div class="message-status">
-            <%=  link_to "Edit", edit_player_path(player),class: "btn-white" %>
+            <%=  link_to edit_player_path(player), class: "btn-option" do %>
+              <i class="fas fa-edit"></i>
+            <% end %>
             <% if (@all_bookings.select{|booking| booking.player_id == player.id}.blank?) %>
-              <%=  link_to player_path(player), method: :delete, data: { confirm: "Are you really sure?"  } do %>
-                  <i class="fas fa-trash-alt"></i>
+              <%=  link_to player_path(player), class: "btn-option", method: :delete, data: { confirm: "Are you really sure?"  } do %>
+                <i class="fas fa-trash-alt"></i>
               <% end  %>
+            <% else %>
+                <i class="fas fa-trash-alt hidd btn-option"></i>
             <% end %>
           </div>
         </div>
@@ -53,7 +57,13 @@
                   </div>
                   <div class="message-body">
                     <p><strong>Status</strong></p>
-                    <p><%= booking.status %></p>
+                    <% if booking.status == "Accepted" %>
+                      <p class="status accepted"><%= booking.status %></p>
+                    <% elsif booking.status == "Declined" %>
+                      <p class="status declined"><%= booking.status %></p>
+                    <% else %>
+                      <p class="status pending"><%= booking.status %></p>
+                    <% end %>
                   </div>
                 </div>
             <% end %>
