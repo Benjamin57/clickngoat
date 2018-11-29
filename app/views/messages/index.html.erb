@@ -1,7 +1,11 @@
 <div class="container">
   <h2>Message</h2>
   <% @messages.each do |message| %>
-    <p><strong>From:</strong> <%= message.user.email %> - <%= message.content %></p>  <br>
+    <% if (message.user == current_user) %>
+      <p style="margin-left: 20px"><strong>From:</strong> Me - <%= message.content %></p>  <br>
+    <% else %>
+      <p><strong>From:</strong> <%= message.user.email %> - <%= message.content %></p>  <br>
+    <% end %>
   <% end %>
 
   <h3>Answer here</h3>
