@@ -12,5 +12,12 @@ Rails.application.routes.draw do
   get "dashboard", to: "pages#dashboard"
   patch "dashboard/bookings/:id", to:"bookings#accept", as: "accept_new_booking"
   put "dashboard/bookings/:id", to:"bookings#decline", as: "decline_new_booking"
+
+  resources :bookings do
+    resources :messages, only: [:index, :create, :show]
+  end
+
 end
+
+
 
