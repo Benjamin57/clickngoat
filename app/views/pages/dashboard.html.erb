@@ -57,7 +57,13 @@
                   </div>
                   <div class="message-body">
                     <p><strong>Status</strong></p>
-                    <p><%= booking.status %></p>
+                    <% if booking.status == "Accepted" %>
+                      <p class="status accepted"><%= booking.status %></p>
+                    <% elsif booking.status == "Declined" %>
+                      <p class="status declined"><%= booking.status %></p>
+                    <% else %>
+                      <p class="status pending"><%= booking.status %></p>
+                    <% end %>
                   </div>
                 </div>
             <% end %>
