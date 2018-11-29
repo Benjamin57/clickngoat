@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
 
   def home
-    @players = Player.all
+    @players = Player.joins(:reviews).where('reviews.rating > 3').group(:id)
   end
 
   def dashboard
