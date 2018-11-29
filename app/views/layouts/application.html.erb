@@ -13,9 +13,9 @@
   <body>
     <%= render 'shared/flashes' %>
     <%= render 'shared/navbar' %>
-    <div class="all-pages-container" >
-      <div style="height: 100%"><%= yield  %></div>
-      <%= render 'shared/footer' unless params["controller"] == "players" && params["action"] == "index"  %>
+    <div class="all-pages-container">
+      <div style="min-height: 100vh"><%= yield %></div>
+      <%= render 'shared/footer' unless params["controller"] == "players" && params["action"] == "index" %>
     </div>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>

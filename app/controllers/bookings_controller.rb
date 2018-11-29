@@ -17,7 +17,7 @@ class BookingsController < ApplicationController
     @booking.user_id = current_user.id
     @booking.total_price = @player.price_per_day * @booking.number_of_days
     if @booking.save
-      redirect_to dashboard_path, notice: 'Booking successful, waiting for confirmation!'
+      redirect_to dashboard_path, notice: "Booking created! Waiting for confirmation"
     else
       render :new
     end
