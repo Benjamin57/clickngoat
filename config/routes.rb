@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :players do
     resources :bookings, only: [:create]
+    resources :reviews, only: [:create]
   end
   get "/dashboard/bookings/:id", to:"bookings#show", as: "show_new_booking"
   get "/dashboard", to: "pages#dashboard"

@@ -22,5 +22,14 @@
   a {
     margin-top: 20px;
   }
-  display: flex;
+}
+
+.container-search-result-text {
+  background: $yellow-goat;
+  font-color: $blue-goat;
+  font-weight: bold;
+  padding: 5px 5px;
+  font-size: 18px;
+  margin-bottom: 0;
+  margin-top: 16px;
 }

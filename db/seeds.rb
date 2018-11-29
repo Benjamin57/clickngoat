@@ -8,7 +8,7 @@
 
 Player.destroy_all
 
-url = "http://static.giantbomb.com/uploads/original/9/99864/2419866-nes_console_set.png"
+url = "https://images.unsplash.com/photo-1466971915632-ff5cb4eb12c4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c48a0b6ae559d1f56dcb25980c4f64c8&auto=format&fit=crop&w=1350&q=80"
 
 tavares = Player.new(name: "Tavares", city: "Dijon", description: "A pretty good goat", level: Player::LEVELS.sample, price_per_day: 10, position: Player::POSITIONS.sample, user_id: 1)
 germain = Player.new(name: "Germain", city: "Turin", description: "Worse goat in the world", level: Player::LEVELS.sample, price_per_day: 1, position: Player::POSITIONS.sample, user_id: 1)

@@ -1,5 +1,6 @@
 class Player < ApplicationRecord
   belongs_to :user
+  has_many :bookings
 
   LEVELS = ["Legend", "World-class", "Professional", "Ligue1", "Regional", "Goat", "World-goat"]
   POSITIONS = ["Forward", "Midfielder", "Center-back", "Wing-back", "Goal-keeper", "Substitute"]
@@ -14,4 +15,19 @@ class Player < ApplicationRecord
   validates :city, presence: true
   geocoded_by :city
   after_validation :geocode, if: :will_save_change_to_city?
+  has_many :reviews, dependent: :destroy
+
+  include PgSearch
+  pg_search_scope :global_search,
+    :against => {
+      :city => 'A',
+      :level => 'B',
+      :position => 'C',
+      :description => 'D',
+      :name => 'D'
+    },
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
+
 end

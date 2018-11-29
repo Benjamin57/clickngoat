@@ -27,5 +27,68 @@
      </div>
      <% end %>
  </div>
+
+<!-- Calculer average_rating -->
+<!-- sum of reviews / count reviews  -->
+
+<div class="row">
+  <div class="col-md-8">
+     <div class="player-show-card">
+        <h3>Reviews</h3>
+        <% array = [] %>
+        <% @player.reviews.each do |review|  %>
+          <% array << review.rating %>
+        <% end %>
+        Average Rating: <% total = array.sum / @player.reviews.count.to_f %>
+
+        <% count = 0 %>
+        <% 5.times do %>
+          <% if total > count %>
+            <i class="fas fa-star"></i>
+          <% else %>
+            <i class="far fa-star"></i>
+          <% end %>
+          <% count += 1 %>
+        <% end %>
+       <div class="list-group">
+         <% @player.reviews.each do |review| %>
+           <li class="list-group-item">
+             <small>
+               <% count = 0 %>
+               <% 5.times do %>
+                 <% if review.rating > count %>
+                   <i class="fas fa-star"></i>
+                 <% else %>
+                   <i class="far fa-star"></i>
+                 <% end %>
+                 <% count += 1 %>
+               <% end %>
+             </small>
+             <p><%= review.content %></p>
+           </li>
+         <% end %>
+       </div>
+     </div>
+     <% if @player.user != current_user %>
+       <div class="player-show-card">
+         <h2>Add a new Review</h2>
+         <%= simple_form_for [@player, @review] do |f| %>
+            <% if @player.errors.any? %>
+              <div class="errors-container">
+                <ul>
+                  <% @player.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+           <%= f.input :content %>
+           <%= f.input :rating, collection: 0..5, default: 0  %>
+           <%= f.submit "add a review", class: "btn my-btn" %>
+         <% end %>
+       </div>
+     <% end %>
+    </div>
+  </div>
 </div>
 
