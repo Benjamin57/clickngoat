@@ -1,19 +1,22 @@
-<h2>Message</h2>
-<% @messages.each do |message| %>
-  <%= message.content %>
-<% end %>
+<div class="container">
+  <h2>Message</h2>
+  <% @messages.each do |message| %>
+    <p><strong>From:</strong> <%= message.user.email %> - <%= message.content %></p>  <br>
+  <% end %>
 
-<h3>Answer here</h3>
-<%= simple_form_for [@booking, @message] do |f| %>
-   <% if @booking.errors.any? %>
-     <div class="errors-container">
-       <ul>
-         <% @booking.errors.full_messages.each do |message| %>
-           <li><%= message %></li>
-         <% end %>
-       </ul>
-     </div>
-   <% end %>
-  <%= f.input :content %>
-  <%= f.submit "Send", class: "btn-white" %>
-<% end %>
+  <h3>Answer here</h3>
+  <%= simple_form_for [@booking, @message] do |f| %>
+     <% if @booking.errors.any? %>
+       <div class="errors-container">
+         <ul>
+           <% @booking.errors.full_messages.each do |message| %>
+             <li><%= message %></li>
+           <% end %>
+         </ul>
+       </div>
+     <% end %>
+    <%= f.input :content %>
+    <%= f.submit "Send", class: "btn-white" %>
+  <% end %>
+
+</div>
