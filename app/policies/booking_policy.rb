@@ -20,4 +20,12 @@ class BookingPolicy < ApplicationPolicy
   def update?
     user == record.user
   end
+
+  def accept?
+    user == record.player.user
+  end
+
+  def decline?
+    user == record.player.user
+  end
 end

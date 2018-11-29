@@ -40,40 +40,41 @@
         <h4>My players bookings</h4>
         <% @all_bookings.each do |booking| %>
           <% if booking.player.user == current_user %>
-            <%= link_to show_new_booking_path(booking), style: "text-decoration:none;" do %>
-              <div class="message">
-                  <%= image_tag "#{booking.player.photo}", style:'height:50px;width:50px;border-radius:50%;' %>
-                  <div class="message-name">
-                    <h3><%= booking.player.name %></h3>
-                    <p><%= booking.player.level %></p>
-                  </div>
-                  <div class="message-body">
-                    <p><strong>Daily Price</strong></p>
-                    <p><%= booking.player.price_per_day %></p>
-                  </div>
-                  <div class="message-body">
-                    <p><strong>Total Price</strong></p>
-                    <p><%= booking.total_price %></p>
-                  </div>
-                  <div class="message-body">
-                    <p><strong>Status</strong></p>
-                    <% if booking.status == "Accepted" %>
-                      <p class="status accepted"><%= booking.status %></p>
-                    <% elsif booking.status == "Declined" %>
-                      <p class="status declined"><%= booking.status %></p>
-                    <% else %>
-                      <p class="status pending"><%= booking.status %></p>
-                    <% end %>
-                  </div>
-                </div>
-            <% end %>
+            <div class="message">
+              <%= image_tag "#{booking.player.photo}", style:'height:50px;width:50px;border-radius:50%;' %>
+              <div class="message-name">
+                <h3><%= booking.player.name %></h3>
+                <p><%= booking.player.level %></p>
+              </div>
+              <div class="message-body">
+                <p><strong>Daily Price</strong></p>
+                <p><%= number_with_delimiter(booking.player.price_per_day, :delimiter => ',') %></p>
+              </div>
+              <div class="message-body">
+                <p><strong>Total Price</strong></p>
+                <p><%= number_with_delimiter(booking.total_price, :delimiter => ',')%></p>
+              </div>
+              <div class="message-body">
+                <p><strong>Status</strong></p>
+                <% if booking.status == "Accepted" %>
+                  <p class="status accepted"><%= booking.status %></p>
+                <% elsif booking.status == "Declined" %>
+                  <p class="status declined"><%= booking.status %></p>
+                <% else %>
+                  <p class="status pending"><%= booking.status %></p>
+                <% end %>
+              </div>
+              <div class="message-body">
+                <p><strong>Action</strong></p>
+                <p><%= link_to 'Accept', accept_new_booking_path(booking), method: :patch %> <%= link_to 'Decline', decline_new_booking_path(booking), method: :patch %></p>
+              </div>
+            </div>
           <% end %>
         <% end %>
       <% end %>
       <% if @bookings_as_renter.present? %>
       <h4>My bookings</h4>
       <% @bookings.each do |booking| %>
-        <%= link_to show_new_booking_path(booking), style: "text-decoration:none;" do %>
           <div class="message">
             <%= image_tag "#{booking.player.photo}", style:'height:50px;width:50px;border-radius:50%;' %>
             <div class="message-name">
@@ -93,7 +94,6 @@
               <p><%= booking.status %></p>
             </div>
           </div>
-        <% end %>
       <% end %>
     <% end %>
 

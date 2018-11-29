@@ -43,7 +43,7 @@
           <% end %>
           (<%= player.reviews.count %>)
 
-          <p><%= player.price_per_day %> € per day</p>
+          <p><%= number_with_delimiter(player.price_per_day, :delimiter => ',') %> € per day</p>
         </div>
       </div>
       <% end %>
