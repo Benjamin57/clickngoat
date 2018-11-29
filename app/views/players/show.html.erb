@@ -71,7 +71,7 @@
      </div>
      <% if @player.user != current_user %>
        <div class="player-show-card">
-         <h2>Add a new Review</h2>
+         <h3>Add a new Review</h3>
          <%= simple_form_for [@player, @review] do |f| %>
             <% if @player.errors.any? %>
               <div class="errors-container">
@@ -84,7 +84,7 @@
             <% end %>
            <%= f.input :content %>
            <%= f.input :rating, collection: 0..5, default: 0  %>
-           <%= f.submit "add a review", class: "btn my-btn" %>
+           <%= f.submit "Add a review", class: "btn-white" %>
          <% end %>
        </div>
      <% end %>
