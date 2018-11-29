@@ -14,4 +14,18 @@ class Player < ApplicationRecord
   validates :city, presence: true
   geocoded_by :city
   after_validation :geocode, if: :will_save_change_to_city?
+
+  include PgSearch
+  pg_search_scope :global_search,
+    :against => {
+      :city => 'A',
+      :level => 'B',
+      :position => 'C',
+      :description => 'D',
+      :name => 'D'
+    },
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
+
 end
