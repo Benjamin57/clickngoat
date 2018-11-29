@@ -9,7 +9,7 @@
   <li><strong><%= player.name %></strong></li>
   <li><%= player.position %></li>
   <li><%= player.level %></li>
-  <li><%= player.price_per_day %> € per day</li>
+  <li><%= number_with_delimiter(player.price_per_day, :delimiter => ',')%> € per day</li>
   <li>
     <% count = 0 %>
     <% 5.times do %>
