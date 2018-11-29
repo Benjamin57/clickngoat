@@ -7,7 +7,8 @@
             <h3><%= @booking.player.name %></h3>
             <%= cl_image_tag @booking.player.photo, height: 200, width: 200, crop: :fill %>
             <p><strong>City:</strong> <%= @booking.player.city %></p>
-            <p><strong>Number of Days:</strong> <%= @booking.number_of_days %> days</p>
+            <p><strong><%= @booking.number_of_days %> days</strong> </p>
+            <p> From <strong><%= @booking.pick_your_date %> to <%= @booking.end_date %> <strong></p>
             <p><strong>Total Price:</strong> <%= @booking.total_price %> €</p>
             <p><strong>Status:</strong> <%= @booking.status %></p>
             <% if @booking.player.user == current_user  %>

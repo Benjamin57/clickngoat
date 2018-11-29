@@ -70,3 +70,14 @@
 .btn-margin-top {
   margin-top: 20px;
 }
+
+.btn-option{
+  font-size: 23px;
+  color: $blue-goat;
+  padding-right: 10px;
+  &:hover{
+    text-decoration: none;
+    opacity: 0.6;
+    color: $blue-goat;
+  }
+}

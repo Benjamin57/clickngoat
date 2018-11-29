@@ -13,6 +13,10 @@ class BookingsController < ApplicationController
   def create
     @player = Player.find(params[:player_id])
     @booking = Booking.new(booking_params)
+    @pick = params[:booking][:pick_your_date]
+    @pick = @pick.split(" to ")
+    @booking.end_date = @pick.last
+    @booking.number_of_days = (@pick[1].to_date - @pick[0].to_date).to_i + 1
     @booking.player = @player
     @booking.user_id = current_user.id
     @booking.total_price = @player.price_per_day * @booking.number_of_days
@@ -61,6 +65,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:number_of_days, :status)
+    params.require(:booking).permit(:pick_your_date, :status)
   end
 end
