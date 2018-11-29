@@ -64,10 +64,12 @@
                   <p class="status pending"><%= booking.status %></p>
                 <% end %>
               </div>
+              <% if booking.status == 'pending' %>
               <div class="message-body">
                 <p><strong>Action</strong></p>
-                <p><%= link_to 'Accept', accept_new_booking_path(booking), method: :patch %> <%= link_to 'Decline', decline_new_booking_path(booking), method: :patch %></p>
+                <p><%= link_to 'Accept', accept_new_booking_path(booking), method: :patch %> <%= link_to 'Decline', decline_new_booking_path(booking), method: :put %></p>
               </div>
+              <% end %>
             </div>
           <% end %>
         <% end %>
@@ -83,15 +85,21 @@
             </div>
             <div class="message-body">
               <p><strong>Daily Price</strong></p>
-              <p><%= booking.player.price_per_day %></p>
+              <p><%= number_with_delimiter(booking.player.price_per_day, :delimiter => ',') %></p>
             </div>
             <div class="message-body">
               <p><strong>Total Price</strong></p>
-              <p><%= booking.total_price %></p>
+              <p><%= number_with_delimiter(booking.total_price, :delimiter => ',') %></p>
             </div>
             <div class="message-body">
               <p><strong>Status</strong></p>
-              <p><%= booking.status %></p>
+                <% if booking.status == "Accepted" %>
+                  <p class="status accepted"><%= booking.status %></p>
+                <% elsif booking.status == "Declined" %>
+                  <p class="status declined"><%= booking.status %></p>
+                <% else %>
+                  <p class="status pending"><%= booking.status %></p>
+                <% end %>
             </div>
           </div>
       <% end %>
