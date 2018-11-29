@@ -6,12 +6,11 @@
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
+      <%= link_to "GUT", ultimate_path, class: "btn-white" %>
       <%= link_to "Add a player", new_player_path, class: "btn-white" %>
-
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">

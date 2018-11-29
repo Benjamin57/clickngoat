@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/ultimate', to: "pages#players"
+
   get 'users/show'
   get 'users/edit', to: "users#edit"
   devise_for :users
