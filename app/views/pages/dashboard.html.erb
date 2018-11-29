@@ -65,8 +65,10 @@
                 <% end %>
               </div>
               <div class="message-body">
-                <p><strong>Action</strong></p>
-                <p> bkaa </p>
+                <p><strong>Email</strong></p>
+                <%= link_to booking_messages_path(booking), class: "btn-option", method: :get do %>
+                  <i class="fas fa-envelope"></i>
+                <% end %>
               </div>
               <% if booking.status == 'pending' %>
               <div class="message-body">
