@@ -4,6 +4,7 @@ class PlayersController < ApplicationController
 
   def index
     @players = policy_scope(Player.where.not(latitude: nil, longitude: nil))
+    @players = @players.global_search(params[:query]) if params[:query].present?
 
     @markers = @players.map do |player|
           {
