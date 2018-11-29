@@ -21,11 +21,15 @@
             <p><%= player.description %></p>
           </div>
           <div class="message-status">
-            <%=  link_to "Edit", edit_player_path(player),class: "btn-white" %>
+            <%=  link_to edit_player_path(player), class: "btn-option" do %>
+              <i class="fas fa-edit"></i>
+            <% end %>
             <% if (@all_bookings.select{|booking| booking.player_id == player.id}.blank?) %>
-              <%=  link_to player_path(player), method: :delete, data: { confirm: "Are you really sure?"  } do %>
-                  <i class="fas fa-trash-alt"></i>
+              <%=  link_to player_path(player), class: "btn-option", method: :delete, data: { confirm: "Are you really sure?"  } do %>
+                <i class="fas fa-trash-alt"></i>
               <% end  %>
+            <% else %>
+                <i class="fas fa-trash-alt hidd btn-option"></i>
             <% end %>
           </div>
         </div>
