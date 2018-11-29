@@ -2,10 +2,10 @@
   <div class="banner-content">
     <h1>Rent footbal players from top clubs</h1>
     <p>Find stars ... and goats</p>
-    <%= form_tag players_path, method: :get, class: "form-inline" do %>
+    <%= form_tag players_path, method: :get, class: "form-inline form-home" do %>
       <%= text_field_tag :query,
         params[:query],
-        class: "form-control",
+        class: "form-control input-home",
         placeholder: "Find a goat"
       %>
       <%= button_tag "Goat Search", class: "btn-yellow" %>
