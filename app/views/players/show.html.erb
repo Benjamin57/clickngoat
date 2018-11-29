@@ -67,23 +67,25 @@
          <% end %>
        </div>
      </div>
-     <div class="player-show-card">
-       <h2>Add a new Review</h2>
-       <%= simple_form_for [@player, @review] do |f| %>
-          <% if @player.errors.any? %>
-            <div class="errors-container">
-              <ul>
-                <% @player.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-                <% end %>
-              </ul>
-            </div>
-          <% end %>
-         <%= f.input :content %>
-         <%= f.input :rating, collection: 0..5  %>
-         <%= f.submit "add a review", class: "btn my-btn" %>
-       <% end %>
-     </div>
+     <% if @player.user != current_user %>
+       <div class="player-show-card">
+         <h2>Add a new Review</h2>
+         <%= simple_form_for [@player, @review] do |f| %>
+            <% if @player.errors.any? %>
+              <div class="errors-container">
+                <ul>
+                  <% @player.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+           <%= f.input :content %>
+           <%= f.input :rating, collection: 0..5, default: 0  %>
+           <%= f.submit "add a review", class: "btn my-btn" %>
+         <% end %>
+       </div>
+     <% end %>
     </div>
   </div>
 </div>
