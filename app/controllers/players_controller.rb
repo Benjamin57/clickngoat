@@ -53,6 +53,9 @@ class PlayersController < ApplicationController
     end
   end
 
+  def average_rating
+  end
+
   private
 
   def set_player

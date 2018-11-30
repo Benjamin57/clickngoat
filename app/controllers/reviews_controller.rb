@@ -3,6 +3,13 @@ class ReviewsController < ApplicationController
     @player = Player.find(params[:player_id])
     @review = Review.new(review_params)
     @review.player = @player
+    @player.average_rating = 0
+    @total_ratings = []
+    @player.reviews.each do |review|
+      @total_ratings << review.rating
+    end
+    @player.average_rating = @total_ratings.sum.to_f / @player.reviews.count.to_f
+    @player.save
     if @review.save
       respond_to do |format|
         format.html { redirect_to player_path(@player) }
