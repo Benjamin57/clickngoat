@@ -1,26 +1,36 @@
 <div class="container">
-  <h2>Message</h2>
-  <% @messages.each do |message| %>
-    <% if (message.user == current_user) %>
-      <p style="margin-left: 20px"><strong>From:</strong> Me - <%= message.content %></p>  <br>
-    <% else %>
-      <p><strong>From:</strong> <%= message.user.email %> - <%= message.content %></p>  <br>
-    <% end %>
-  <% end %>
-
-  <h3>Answer here</h3>
-  <%= simple_form_for [@booking, @message] do |f| %>
-     <% if @booking.errors.any? %>
-       <div class="errors-container">
-         <ul>
-           <% @booking.errors.full_messages.each do |message| %>
-             <li><%= message %></li>
-           <% end %>
-         </ul>
-       </div>
-     <% end %>
-    <%= f.input :content %>
-    <%= f.submit "Send", class: "btn-white" %>
-  <% end %>
+  <div class="container-inbox">
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
+        <h3 id="inbox-title">My inbox</h3>
+        <% @messages.each do |message| %>
+          <% if (message.user == current_user) %>
+            <div class="inbox-message-current-user">
+              <p><%= message.content %></p>
+            </div>
+          <% else %>
+            <div class="inbox-message-other-user">
+            <p><%= message.content %></p>
+            </div>
+          <% end %>
+        <% end %>
+       <div class="form-inbox">
+          <%= simple_form_for [@booking, @message] do |f| %>
+             <% if @booking.errors.any? %>
+               <div class="errors-container">
+                 <ul>
+                   <% @booking.errors.full_messages.each do |message| %>
+                     <li><%= message %></li>
+                   <% end %>
+                 </ul>
+               </div>
+             <% end %>
+            <%= f.input :content, label: false %>
+            <%= f.submit "Send", class: "btn-white" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>
