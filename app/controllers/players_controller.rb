@@ -47,7 +47,10 @@ class PlayersController < ApplicationController
 
   def destroy
     @player.destroy
-    redirect_to dashboard_path
+    respond_to do |format|
+      format.html { redirect_to dashboard_path }
+      format.js
+    end
   end
 
   private
