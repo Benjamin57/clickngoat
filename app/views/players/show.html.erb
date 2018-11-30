@@ -5,83 +5,55 @@
   </div>
 </div>
 <div class="container">
- <div class="row" >
-   <div class="col-md-8">
-     <div class="player-show-card">
+  <div class="row" >
+    <div class="col-md-8">
+      <div class="player-show-card">
         <p><%= @player.city %></p>
-       <h3>Description</h3>
-       <p><%= @player.description %></p>
-     </div>
-   </div>
-   <% if @player.user != current_user %>
-     <div class="col-md-4">
-       <div class="player-show-card">
+        <h3>Description</h3>
+        <p><%= @player.description %></p>
+      </div>
+    </div>
+    <% if @player.user != current_user %>
+      <div class="col-md-4">
+        <div class="player-show-card">
         <h4><%= number_with_delimiter(@player.price_per_day, :delimiter => ',') %>€ per day</h4>
         <%= simple_form_for [@player, @booking] do |f| %>
           <div class="form-wrapper" style="margin: 0 auto;">
-              <%= f.input :pick_your_date, as: :string, required: false, input_html: {id: "range_start"} %>
-              <%= f.submit "Book", class: "btn-yellow" %>
+            <%= f.input :pick_your_date, as: :string, required: false, input_html: {id: "range_start"} %>
+            <%= f.submit "Book", class: "btn-yellow" %>
           </div>
-         <% end %>
-       </div>
-     </div>
-     <% end %>
- </div>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+  </div>
 
 <!-- Calculer average_rating -->
 <!-- sum of reviews / count reviews  -->
 
-<div class="row">
-  <div class="col-md-8">
-     <div class="player-show-card">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="player-show-card">
         <h3>Reviews</h3>
-        <% array = [] %>
-        <% @player.reviews.each do |review|  %>
-          <% array << review.rating %>
-        <% end %>
-        Average Rating: <% total = array.sum / @player.reviews.count.to_f %>
-
-        <% count = 0 %>
-        <% 5.times do %>
-          <% if total > count %>
-            <i class="fas fa-star"></i>
-          <% else %>
-            <i class="far fa-star"></i>
-          <% end %>
-          <% count += 1 %>
-        <% end %>
-       <div class="list-group">
-         <% @player.reviews.each do |review| %>
-           <li class="list-group-item">
-             <small>
-               <% count = 0 %>
-               <% 5.times do %>
-                 <% if review.rating > count %>
-                   <i class="fas fa-star"></i>
-                 <% else %>
-                   <i class="far fa-star"></i>
-                 <% end %>
-                 <% count += 1 %>
-               <% end %>
-             </small>
-             <p><%= review.content %></p>
-           </li>
-         <% end %>
-       </div>
-     </div>
-     <% if @player.user != current_user %>
-       <div class="player-show-card">
-         <h3>Add a new Review</h3>
-         <%= simple_form_for [@player, @review] do |f| %>
-            <% if @player.errors.any? %>
-              <div class="errors-container">
-                <ul>
-                  <% @player.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                  <% end %>
-                </ul>
-              </div>
+        <div class="list-group">
+          <li class="list-group-item" id="reviews" >
+            <% @player.reviews.each do |review|  %>
+              <%= render "reviews/show", review: review %>
             <% end %>
+
+          </li>
+        </div>
+      </div>
+      <% if @player.user != current_user %>
+        <div class="player-show-card">
+          <h3>Add a new Review</h3>
+          <%= render "reviews/form", player: @player, review: @review %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
            <%= f.input :content %>
            <h5><strong>Rating *</strong></h5>
            <%= f.input :rating, as: :hidden %>
@@ -98,5 +70,6 @@
     </div>
   </div>
 </div>
+
 
 
