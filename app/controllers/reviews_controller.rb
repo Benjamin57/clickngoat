@@ -4,9 +4,15 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.player = @player
     if @review.save
-      redirect_to player_path(@player)
+      respond_to do |format|
+        format.html { redirect_to player_path(@player) }
+        format.js
+      end
     else
-      render "players/show"
+      respond_to do |format|
+        format.html { render "players/show" }
+        format.js
+      end
     end
     authorize @review
   end

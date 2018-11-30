@@ -1,0 +1,14 @@
+<%= simple_form_for([player, review], remote: true) do |f| %>
+  <% if @player.errors.any? %>
+    <div class="errors-container">
+      <ul>
+        <% @player.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.input :content %>
+  <%= f.input :rating, collection: 0..5, default: 0  %>
+  <%= f.submit "Add a review", class: "btn-white" %>
+<% end %>
