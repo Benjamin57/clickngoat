@@ -11,15 +11,10 @@
           <div class="flex-list">
           <ul>
             <li><%= gk.name %></li>
-            <li><% array = [] %>
-            <% gk.reviews.each do |review|  %>
-              <% array << review.rating %>
-            <% end %>
-            <% total = array.sum / gk.reviews.count.to_f %>
 
             <% count = 0 %>
             <% 5.times do %>
-              <% if total > count %>
+              <% if gk.average_rating > count %>
                 <i class="fas fa-star"></i>
               <% else %>
                 <i class="far fa-star"></i>
@@ -42,15 +37,11 @@
         <div class="flex-list">
           <ul>
             <li><%= back.name %></li>
-            <li><% array = [] %>
-            <% back.reviews.each do |review|  %>
-              <% array << review.rating %>
-            <% end %>
-            <% total = array.sum / back.reviews.count.to_f %>
+
 
             <% count = 0 %>
             <% 5.times do %>
-              <% if total > count %>
+              <% if back.average_rating > count %>
                 <i class="fas fa-star"></i>
               <% else %>
                 <i class="far fa-star"></i>
@@ -73,15 +64,10 @@
           <div class="flex-list">
             <ul>
               <li><%= midfielder.name %></li>
-              <li><% array = [] %>
-              <% midfielder.reviews.each do |review|  %>
-                <% array << review.rating %>
-              <% end %>
-              <% total = array.sum / midfielder.reviews.count.to_f %>
 
               <% count = 0 %>
               <% 5.times do %>
-                <% if total > count %>
+                <% if midfielder.average_rating > count %>
                   <i class="fas fa-star"></i>
                 <% else %>
                   <i class="far fa-star"></i>
@@ -105,15 +91,10 @@
           <div class="flex-list">
             <ul>
               <li><%= forward.name %></li>
-              <li><% array = [] %>
-              <% forward.reviews.each do |review|  %>
-                <% array << review.rating %>
-              <% end %>
-              <% total = array.sum / forward.reviews.count.to_f %>
 
               <% count = 0 %>
               <% 5.times do %>
-                <% if total > count %>
+                <% if forward.average_rating > count %>
                   <i class="fas fa-star"></i>
                 <% else %>
                   <i class="far fa-star"></i>
