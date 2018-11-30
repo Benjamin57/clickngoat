@@ -47,8 +47,8 @@
                 <p><%= booking.player.level %></p>
               </div>
               <div class="message-body">
-                <p><strong>Daily Price</strong></p>
-                <p><%= number_with_delimiter(booking.player.price_per_day, :delimiter => ',') %> €</p>
+                <p><strong>Duration</strong></p>
+                <p><%= number_with_delimiter(booking.number_of_days, :delimiter => ',') %> Days </p>
               </div>
               <div class="message-body">
                 <p><strong>Total Price</strong></p>
@@ -97,8 +97,8 @@
               <p><%= booking.player.level %></p>
             </div>
             <div class="message-body">
-              <p><strong>Daily Price</strong></p>
-              <p><%= number_with_delimiter(booking.player.price_per_day, :delimiter => ',') %> €</p>
+              <p><strong>Duration</strong></p>
+              <p><%= number_with_delimiter(booking.number_of_days, :delimiter => ',') %> Days </p>
             </div>
             <div class="message-body">
               <p><strong>Total Price</strong></p>
