@@ -51,6 +51,10 @@
                 <p><%= number_with_delimiter(booking.number_of_days, :delimiter => ',') %> Days </p>
               </div>
               <div class="message-body">
+                <p><strong>Dates</strong></p>
+                <p> from <%= number_with_delimiter(booking.pick_your_date, :delimiter => ',') %> to <%= number_with_delimiter(booking.end_date, :delimiter => ',')%> </p>
+              </div>
+              <div class="message-body">
                 <p><strong>Total Price</strong></p>
                 <p><%= number_with_delimiter(booking.total_price, :delimiter => ',')%> €</p>
               </div>
@@ -99,6 +103,10 @@
             <div class="message-body">
               <p><strong>Duration</strong></p>
               <p><%= number_with_delimiter(booking.number_of_days, :delimiter => ',') %> Days </p>
+            </div>
+            <div class="message-body">
+              <p><strong>Dates</strong></p>
+              <p> from <%= number_with_delimiter(booking.pick_your_date, :delimiter => ',') %> to <%= number_with_delimiter(booking.end_date, :delimiter => ',')%> </p>
             </div>
             <div class="message-body">
               <p><strong>Total Price</strong></p>
