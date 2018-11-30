@@ -66,7 +66,12 @@
               </div>
               <div class="message-body">
                 <p><strong>Email</strong></p>
-                <%= link_to booking_messages_path(booking), class: "btn-option", method: :get do %>
+                <%= link_to booking_messages_path(booking), class: "btn-option message-body-counter", method: :get do %>
+                  <% if booking.messages.count > 0 %>
+                    <div class="inbox-counter">
+                      <p><%= booking.messages.count %></p>
+                    </div>
+                  <% end %>
                   <i class="fas fa-envelope"></i>
                 <% end %>
               </div>
@@ -111,9 +116,13 @@
             </div>
             <div class="message-body">
               <p><strong>Email</strong></p>
-              <%= link_to booking_messages_path(booking), class: "btn-option", method: :get do %>
+              <%= link_to booking_messages_path(booking), class: "btn-option message-body-counter", method: :get do %>
+                <% if booking.messages.count > 0 %>
+                  <div class="inbox-counter">
+                    <p><%= booking.messages.count %></p>
+                  </div>
+                <% end %>
                 <i class="fas fa-envelope"></i>
-                <%= booking.messages.count %>
               <% end %>
             </div>
           </div>
