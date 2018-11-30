@@ -4,38 +4,93 @@
   <div class="flex-item goalkeeper">
       <% @gks.each do |gk| %>
         <%= link_to player_path(gk), style: "text-decoration:none;" do %>
-          <p><%= cl_image_tag gk.photo, style: "border-radius:5px;", size: "100" %> <%= gk.name %></p>
+        <div class="flex-element">
+          <div class="flex-image">
+            <%= cl_image_tag gk.photo, style: "border-radius:5px;", size: "80" %>
+          </div>
+          <div class="flex-list">
+          <ul>
+            <li><%= gk.name %></li>
+            <li><% array = [] %>
+            <% gk.reviews.each do |review|  %>
+              <% array << review.rating %>
+            <% end %>
+            <% total = array.sum / gk.reviews.count.to_f %>
+
+            <% count = 0 %>
+            <% 5.times do %>
+              <% if total > count %>
+                <i class="fas fa-star"></i>
+              <% else %>
+                <i class="far fa-star"></i>
+              <% end %>
+              <% count += 1 %>
+            <% end %></li>
+          </ul>
+        </div>
+        </div>
         <% end %>
       <% end %>
   </div>
   <div class="flex-item">
     <% @backs.each do |back| %>
       <%= link_to player_path(back), style: "text-decoration:none;" do %>
-      <p><%= cl_image_tag back.photo, style: "border-radius:5px;", size: "100" %>
-          <%= back.name %>
-          <% array = [] %>
-          <% back.reviews.each do |review|  %>
-            <% array << review.rating %>
-          <% end %>
-          <% total = array.sum / back.reviews.count.to_f %>
-
-          <% count = 0 %>
-          <% 5.times do %>
-            <% if total > count %>
-              <i class="fas fa-star"></i>
-            <% else %>
-              <i class="far fa-star"></i>
+      <div class="flex-element">
+        <div class="flex-image">
+          <%= cl_image_tag back.photo, style: "border-radius:5px;", size: "80" %>
+        </div>
+        <div class="flex-list">
+          <ul>
+            <li><%= back.name %></li>
+            <li><% array = [] %>
+            <% back.reviews.each do |review|  %>
+              <% array << review.rating %>
             <% end %>
-            <% count += 1 %>
-          <% end %>
-      </p>
+            <% total = array.sum / back.reviews.count.to_f %>
+
+            <% count = 0 %>
+            <% 5.times do %>
+              <% if total > count %>
+                <i class="fas fa-star"></i>
+              <% else %>
+                <i class="far fa-star"></i>
+              <% end %>
+              <% count += 1 %>
+            <% end %></li>
+          </ul>
+        </div>
+      </div>
       <% end %>
     <% end %>
   </div>
   <div class="flex-item">
     <% @midfielders.each do |midfielder| %>
       <%= link_to player_path(midfielder), style: "text-decoration:none;" do %>
-        <p><%= cl_image_tag midfielder.photo, style: "border-radius:5px;", size: "100" %> <%= midfielder.name %></p>
+        <div class="flex-element">
+          <div class="flex-image">
+            <%= cl_image_tag midfielder.photo, style: "border-radius:5px;", size: "80" %>
+          </div>
+          <div class="flex-list">
+            <ul>
+              <li><%= midfielder.name %></li>
+              <li><% array = [] %>
+              <% midfielder.reviews.each do |review|  %>
+                <% array << review.rating %>
+              <% end %>
+              <% total = array.sum / midfielder.reviews.count.to_f %>
+
+              <% count = 0 %>
+              <% 5.times do %>
+                <% if total > count %>
+                  <i class="fas fa-star"></i>
+                <% else %>
+                  <i class="far fa-star"></i>
+                <% end %>
+                <% count += 1 %>
+              <% end %></li>
+            </ul>
+          </div>
+        </div>
       <% end %>
     <% end %>
     </ul>
@@ -43,7 +98,31 @@
   <div class="flex-item">
     <% @forwards.each do |forward| %>
       <%= link_to player_path(forward), style: "text-decoration:none;" do %>
-        <p><%= cl_image_tag forward.photo, style: "border-radius:5px;", size: "100" %> <%= forward.name %></p>
+        <div class="flex-element">
+          <div class="flex-image">
+            <%= cl_image_tag forward.photo, style: "border-radius:5px;", size: "80" %>
+          </div>
+          <div class="flex-list">
+            <ul>
+              <li><%= forward.name %></li>
+              <li><% array = [] %>
+              <% forward.reviews.each do |review|  %>
+                <% array << review.rating %>
+              <% end %>
+              <% total = array.sum / forward.reviews.count.to_f %>
+
+              <% count = 0 %>
+              <% 5.times do %>
+                <% if total > count %>
+                  <i class="fas fa-star"></i>
+                <% else %>
+                  <i class="far fa-star"></i>
+                <% end %>
+                <% count += 1 %>
+              <% end %></li>
+            </ul>
+          </div>
+        </div>
       <% end %>
     <% end %>
   </div>

@@ -10,14 +10,17 @@
 
 .flex-item {
   margin-top: 50px;
-  p{
-    color:white;
-    padding: 30px 10px;
-    &:hover {
-      opacity: 0.7;
-    }
-  }
 }
 .goalkeeper {
-    margin-top: 100px;
+  margin-top: 100px;
+}
+
+.flex-element {
+  display:flex;
+  color: white;
+  padding: 15px 20px;
+  font-size: 16px;
+  &:hover {
+    opacity: 0.7;
+  }
 }
