@@ -10,7 +10,7 @@
     </div>
     <div id="players">
       <% @players.each do |player| %>
-        <div class="message">
+        <div class="message" data-player-id="<%= player.id %>">
           <%= image_tag "#{player.photo}", style:'height:50px;width:50px;border-radius:50%;' %>
           <div class="message-name">
             <h3><%= player.name %></h3>
@@ -25,7 +25,7 @@
               <i class="fas fa-edit"></i>
             <% end %>
             <% if (@all_bookings.select{|booking| booking.player_id == player.id}.blank?) %>
-              <%=  link_to player_path(player), class: "btn-option", method: :delete, data: { confirm: "Are you really sure?"  } do %>
+              <%=  link_to player_path(player), class: "btn-option", method: :delete, remote: true do %>
                 <i class="fas fa-trash-alt"></i>
               <% end  %>
             <% else %>
@@ -48,11 +48,11 @@
               </div>
               <div class="message-body">
                 <p><strong>Daily Price</strong></p>
-                <p><%= number_with_delimiter(booking.player.price_per_day, :delimiter => ',') %></p>
+                <p><%= number_with_delimiter(booking.player.price_per_day, :delimiter => ',') %> €</p>
               </div>
               <div class="message-body">
                 <p><strong>Total Price</strong></p>
-                <p><%= number_with_delimiter(booking.total_price, :delimiter => ',')%></p>
+                <p><%= number_with_delimiter(booking.total_price, :delimiter => ',')%> €</p>
               </div>
               <div class="message-body">
                 <p><strong>Status</strong></p>
@@ -66,7 +66,12 @@
               </div>
               <div class="message-body">
                 <p><strong>Email</strong></p>
-                <%= link_to booking_messages_path(booking), class: "btn-option", method: :get do %>
+                <%= link_to booking_messages_path(booking), class: "btn-option message-body-counter", method: :get do %>
+                  <% if booking.messages.count > 0 %>
+                    <div class="inbox-counter">
+                      <p><%= booking.messages.count %></p>
+                    </div>
+                  <% end %>
                   <i class="fas fa-envelope"></i>
                 <% end %>
               </div>
@@ -93,11 +98,11 @@
             </div>
             <div class="message-body">
               <p><strong>Daily Price</strong></p>
-              <p><%= number_with_delimiter(booking.player.price_per_day, :delimiter => ',') %></p>
+              <p><%= number_with_delimiter(booking.player.price_per_day, :delimiter => ',') %> €</p>
             </div>
             <div class="message-body">
               <p><strong>Total Price</strong></p>
-              <p><%= number_with_delimiter(booking.total_price, :delimiter => ',') %></p>
+              <p><%= number_with_delimiter(booking.total_price, :delimiter => ',') %> €</p>
             </div>
             <div class="message-body">
               <p><strong>Status</strong></p>
@@ -111,7 +116,12 @@
             </div>
             <div class="message-body">
               <p><strong>Email</strong></p>
-              <%= link_to booking_messages_path(booking), class: "btn-option", method: :get do %>
+              <%= link_to booking_messages_path(booking), class: "btn-option message-body-counter", method: :get do %>
+                <% if booking.messages.count > 0 %>
+                  <div class="inbox-counter">
+                    <p><%= booking.messages.count %></p>
+                  </div>
+                <% end %>
                 <i class="fas fa-envelope"></i>
               <% end %>
             </div>
