@@ -7,10 +7,12 @@
           <% if (message.user == current_user) %>
             <div class="inbox-message-current-user">
               <p><%= message.content %></p>
+              <p id="inbox-date"><%= message.created_at.time %></p>
             </div>
           <% else %>
             <div class="inbox-message-other-user">
             <p><%= message.content %></p>
+            <p id="inbox-date"><%= message.created_at.time %></p>
             </div>
           <% end %>
         <% end %>
