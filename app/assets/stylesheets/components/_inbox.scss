@@ -1,0 +1,35 @@
+
+.inbox-message-current-user {
+  border-radius: 5px;
+  background-color: $yellow-goat;
+  font-color: $blue-goat;
+  box-shadow: 1px 1px 3px rgba(200, 200, 200, 0.4);
+  padding: 5px 8px;
+  margin-left: 96px;
+  max-width: 500px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+    p {
+      margin: 0;
+    }
+}
+
+#inbox-title {
+  margin-bottom: 32px;
+}
+
+.inbox-message-other-user {
+  border-radius: 5px;
+  background-color: white;
+  font-color: $blue-goat;
+  box-shadow: 1px 1px 3px rgba(200, 200, 200, 0.4);
+  padding: 5px 8px;
+  max-width: 500px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  p {
+    margin: 0;
+  }
+}
+
+
