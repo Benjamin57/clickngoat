@@ -39,4 +39,27 @@
   margin-top: 2px;
 }
 
+.inbox-counter {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 18px;
+  font-size: 9px;
+  font-weight: bold;
+  background-color: $yellow-goat;
+  color: $blue-goat;
+  top: 2px;
+  right: 2px;
+  p {
+    margin: 0;
+  }
+  padding: 1px;
+}
+
+.message-body-counter {
+  position: relative;
+}
+
 
